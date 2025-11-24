@@ -15,8 +15,8 @@ services:
   # '--profile=setup' CLI flag to Compose commands, or "up" the service by name
   # such as 'docker compose up setup'.
   setup:
-    profiles:
-      - setup
+    # profiles:
+    #   - setup
     build:
       context: setup/
       args:
@@ -47,8 +47,8 @@ services:
   # '--profile=setup' CLI flag to Compose commands, or "up" the service by name
   # such as 'docker compose up kibana-genkeys'.
   kibana-genkeys:
-    profiles:
-      - setup
+    # profiles:
+    #   - setup
     build:
       context: kibana/
       args:
@@ -68,7 +68,7 @@ services:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,Z
       - elasticsearch:/usr/share/elasticsearch/data:Z
     ports:
-      - 9200:9200
+      - 9203:9200
       - 9300:9300
     environment:
       node.name: elasticsearch
@@ -94,7 +94,7 @@ services:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
     ports:
-      - 5044:5044
+      - 5046:5044
       - 50000:50000/tcp
       - 50000:50000/udp
       - 9600:9600
@@ -116,7 +116,7 @@ services:
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
     ports:
-      - 5601:5601
+      - 5603:5601
     environment:
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
     networks:
