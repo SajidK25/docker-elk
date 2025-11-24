@@ -15,7 +15,7 @@ services:
       # see: https://www.elastic.co/docs/reference/beats/libbeat/config-file-permissions
       - --strict.perms=false
     volumes:
-      - ./extensions/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,Z
+      # - ./extensions/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro,Z
       - type: bind
         source: /var/lib/docker/containers
         target: /var/lib/docker/containers
